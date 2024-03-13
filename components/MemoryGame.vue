@@ -21,6 +21,8 @@ const images = [
 
 const cards = ref<Card[]>([])
 let selectedCards: Card[] = []
+let isProcessing = false
+const counter = ref(0)
 
 const startGame = () => {
   const doubledImages = [...images, ...images]
@@ -40,10 +42,15 @@ const resetGame = () => {
 }
 
 const flipCard = (card: Card) => {
+  if (isProcessing || card.flipped) return
+
   card.flipped = true
   selectedCards.push(card)
 
   if (selectedCards.length === 2) {
+    isProcessing = true
+    counter.value++
+    console.log("nombre de coups", counter.value)
     const [firstCard, secondCard] = selectedCards
 
     if (firstCard.image !== secondCard.image) {
@@ -51,12 +58,26 @@ const flipCard = (card: Card) => {
         firstCard.flipped = false
         secondCard.flipped = false
         selectedCards = []
+        isProcessing = false
       }, 1000)
     } else {
       firstCard.matched = true
       secondCard.matched = true
       selectedCards = []
+      isProcessing = false
+
+      if (cards.value.every((card) => card.matched)) {
+        showModal()
+      }
     }
+  }
+}
+
+const showModal = () => {
+  const modal = document.getElementById("my_modal_5") as HTMLDialogElement
+
+  if (modal) {
+    modal.showModal()
   }
 }
 
@@ -67,6 +88,13 @@ onMounted(() => {
 <template>
   <div>
     <h1 class="text-center font-bold text-4xl my-4">Memory Game</h1>
+
+    <div class="flex justify-center mx-auto my-5">
+      <button @click="startGame" class="btn btn-outline btn-success mr-2">
+        Commencer une partie
+      </button>
+      <button @click="resetGame" class="btn btn-warning">Recommencer</button>
+    </div>
 
     <div
       class="grid md:grid-cols-2 lg:grid-cols-4 grid-rows-4 sm:w-4/5 gap-2 mx-auto items-center"
@@ -82,24 +110,16 @@ onMounted(() => {
         </div>
       </div>
     </div>
-
-    <div>
-      <button @click="startGame">Start Game</button>
-      <button @click="resetGame">Reset Game</button>
-    </div>
   </div>
 
-  <button class="btn" onclick="my_modal_5.showModal()">open modal</button>
   <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
     <div class="modal-box">
       <h3 class="font-bold text-lg">Félicitation !</h3>
-      <p class="py-4">Vous avez finalisé la grille en xx coups</p>
-      <div class="modal-action">
-        <form method="dialog">
-          <!-- if there is a button in form, it will close the modal -->
-          <button class="btn">Fermer</button>
-        </form>
-      </div>
+      <p class="py-4">Vous avez finalisé la grille en {{ counter }} coups</p>
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">fermer</button>
+      </form>
     </div>
   </dialog>
 </template>
