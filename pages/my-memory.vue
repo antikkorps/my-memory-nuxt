@@ -1,5 +1,5 @@
 <template>
   <div>
-    <NuxtLayout />
+    <h1>This is the memory game</h1>
   </div>
 </template>
