@@ -67,7 +67,6 @@ onMounted(() => {
 <template>
   <div>
     <h1 class="text-center font-bold text-4xl my-4">Memory Game</h1>
-    <h2 class="text-center font-bold text-3xl my-4">Nombre de coups : xx</h2>
 
     <div
       class="grid md:grid-cols-2 lg:grid-cols-4 grid-rows-4 sm:w-4/5 gap-2 mx-auto items-center"
@@ -89,4 +88,18 @@ onMounted(() => {
       <button @click="resetGame">Reset Game</button>
     </div>
   </div>
+
+  <button class="btn" onclick="my_modal_5.showModal()">open modal</button>
+  <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+    <div class="modal-box">
+      <h3 class="font-bold text-lg">Félicitation !</h3>
+      <p class="py-4">Vous avez finalisé la grille en xx coups</p>
+      <div class="modal-action">
+        <form method="dialog">
+          <!-- if there is a button in form, it will close the modal -->
+          <button class="btn">Fermer</button>
+        </form>
+      </div>
+    </div>
+  </dialog>
 </template>
