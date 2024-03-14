@@ -25,6 +25,7 @@ let isProcessing = false
 const counter = ref(0)
 
 const startGame = () => {
+  counter.value = 0
   const doubledImages = [...images, ...images]
   const shuffledImages = doubledImages.sort(() => Math.random() - 0.5)
 
