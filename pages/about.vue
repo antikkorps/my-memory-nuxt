@@ -1,11 +1,15 @@
 <template>
-  <div>
-    <h1>About the memory game</h1>
+  <div class="flex flex-col justify-center mx-auto w-full sm:w-1/2">
+    <h1 class="text-3xl py-4 mx-auto justify-center font-bold">About the memory game</h1>
     <p>
-      This is a simple memory game built with Vue 3 and Vite. It's a fun way to test your
-      memory and improve your focus. The game is simple: you click on a card to flip it
-      over, then click on another card to find the matching card. If you find all the
-      matching cards, you win!
+      Il s'agit d'un simple jeu de memory construit avec Nuxt et Vue. C'est un moyen drôle
+      de tester sa mémoire et d'améliorer sa concentration.
     </p>
+    <p>
+      Le jeu est simple : vous avez une grille représentant des cartes. Cliquez sur deux
+      pour les retourner, si elles correspondent, continuez.
+    </p>
+    <p>Si vous trouvez toutes les cartes correspondantes, vous gagnez!</p>
+    <p>Essayez de le faire en le moins de coups possible.</p>
   </div>
 </template>
