@@ -1,6 +1,8 @@
 <template>
-  <div class="flex flex-col justify-center mx-auto w-full sm:w-1/2">
-    <h1 class="text-3xl py-4 mx-auto justify-center font-bold">About the memory game</h1>
+  <div class="flex flex-col justify-center mx-auto w-full sm:w-1/2 px-4">
+    <h1 class="text-3xl py-4 mx-auto justify-center text-center font-bold">
+      About the memory game
+    </h1>
     <p>
       Il s'agit d'un simple jeu de memory construit avec Nuxt et Vue. C'est un moyen drôle
       de tester sa mémoire et d'améliorer sa concentration.
