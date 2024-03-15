@@ -96,18 +96,19 @@ onMounted(() => {
       </button>
       <button @click="resetGame" class="btn btn-warning">Recommencer</button>
     </div>
-
-    <div
-      class="grid md:grid-cols-2 lg:grid-cols-4 grid-rows-4 sm:w-4/5 gap-2 mx-auto items-center"
-    >
-      <div v-for="card in cards" :key="card.id" class="w-50 h-50">
-        <div @click="flipCard(card)" class="w-52 h-52">
-          <NuxtImg
-            v-if="card.flipped || card.matched"
-            :src="card.image"
-            class="object-cover w-full h-full"
-          />
-          <div v-else class="bg-gray-300 w-52 h-52"></div>
+    <div class="flex justify-center items-center relative top-20 sm:top-16 mx-auto">
+      <div
+        class="grid grid-cols-4 grid-rows-4 md:grid-cols-2 lg:grid-cols-4 lg:grid-rows-4 sm:w-4/5 gap-2 mx-auto justify-items-center justify-self-center"
+      >
+        <div v-for="card in cards" :key="card.id" class="w-30 h-30 sm:w-50 sm:h-50">
+          <div @click="flipCard(card)" class="w-16 h-16 sm:w-48 sm:h-48">
+            <NuxtImg
+              v-if="card.flipped || card.matched"
+              :src="card.image"
+              class="object-cover w-full h-full"
+            />
+            <div v-else class="bg-gray-400 w-16 h-16 sm:w-48 sm:h-48"></div>
+          </div>
         </div>
       </div>
     </div>

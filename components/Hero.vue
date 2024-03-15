@@ -7,7 +7,7 @@
         <button class="btn btn-primary mx-2">
           <NuxtLink to="/my-memory">Jouer !!!</NuxtLink>
         </button>
-        <button class="btn btn-outline btn-warning mx-2">
+        <button class="btn btn-warning mx-2">
           <NuxtLink to="/about">consultez les règles du jeu</NuxtLink>
         </button>
       </div>
